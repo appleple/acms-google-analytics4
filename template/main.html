@@ -1,0 +1,107 @@
+<header>
+  <div class="container">
+    @include("/admin/topicpath.html")
+  </div>
+  <div>
+    <h1 class="acms-admin-admin-title js-dialog-title">Shopping Cart 設定</h1>
+  </div>
+  <div class="acms-admin-col-md-6"></div>
+</header>
+<!-- BEGIN_MODULE Admin_Config -->
+
+<!-- BEGIN_IF [{notice_mess}/nem/] -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info">
+  <span
+    class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before"
+    aria-hidden="true"
+  ></span>
+  <button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+  <!--T-->設定を保存しました
+  <!--/T-->
+</p>
+<!-- END_IF -->
+
+<!-- BEGIN_MODULE Admin_Errors -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger">
+  <span
+    class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before"
+    aria-hidden="true"
+  ></span>
+  <button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+  {error}
+</p>
+<!-- END_MODULE Admin_Errors -->
+
+<form action="" method="post" class="js-adminSave acms-admin-form">
+  <div class="js-acms_fix_marker acms_fix_bg">
+    <div class="acms-admin-form-group acms_fix_bg_index">
+      <input
+        type="submit"
+        name="ACMS_POST_Config"
+        value="保存"
+        class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save"
+      />
+    </div>
+  </div>
+
+  <div class="acms-admin-tabs">
+    <ul class="js-acms_admin_tabs">
+      <li><a href="#acms_basic" class="js-acms_tab">基本設定</a></li>
+      <li><a href="#acms_order" class="js-acms_tab">注文画面設定</a></li>
+      <li><a href="#acms_shipping" class="js-acms_tab">送料設定</a></li>
+      <!-- BEGIN_IF [{shopping-cart_card-payment-service}/nem] -->
+      <li><a href="#acms_integration" class="js-acms_tab">決済サービスとの連携</a></li>
+      <!-- END_IF -->
+      <li><a href="#acms_module" class="js-acms_tab">モジュール</a></li>
+    </ul>
+    <div id="acms_basic" class="acms-admin-tabs-panel">
+      <!-- 基本設定 -->
+      @include("./admin/config/basic.html")
+    </div>
+
+    <div id="acms_order" class="acms-admin-tabs-panel">
+      <!-- 注文画面設定 -->
+      @include("./admin/config/order.html")
+    </div>
+
+    <div id="acms_shipping" class="acms-admin-tabs-panel">
+      <!-- 送料設定 -->
+      @include("./admin/config/shipping.html")
+    </div>
+
+    <!-- BEGIN_IF [{shopping-cart_card-payment-service}/nem] -->
+    <div id="acms_integration" class="acms-admin-tabs-panel">
+      @include("./admin/config/integration.html")
+    </div>
+    <!-- END_IF -->
+
+    <div id="acms_module" class="acms-admin-tabs-panel">
+      <!-- モジュール -->
+      @include("./admin/config/module.html")
+    </div>
+  </div>
+</form>
+<!-- END_MODULE Admin_Config -->
+
+<script>
+  ACMS.Ready(function () {
+    const gids = [
+      <!-- BEGIN_MODULE ShoppingCart_Settings --><!-- BEGIN shipping --><!-- BEGIN group:loop -->
+      '{id}',
+      <!-- END group:loop --><!-- END shipping --><!-- END_MODULE ShoppingCart_Settings -->
+    ];
+    const defaultAnker = `#acms_${gids[0]}`;
+    const shippingAnker = '#acms_shipping';
+    const { hash } = location;
+
+    setTimeout(() => {
+      if (gids.includes(hash.slice(6))) {
+        document.querySelector(shippingAnker).style.display = '';
+        document.querySelector(`[href="${shippingAnker}"]`).classList.add('js-acms_tab-active');
+      } else {
+        document.querySelector(defaultAnker).style.display = '';
+        document.querySelector(`[href="${defaultAnker}"]`).classList.add('js-acms_tab-active');
+      }
+    }, 1000);
+  });
+</script>
