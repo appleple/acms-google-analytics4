@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "package": "node ./tools/build.js",
-    "upload": "gdrive upload -r -p 1PoY-JLkytrV1B9sDBn1xaQviYAyk4eZs ./build/*",
     "commit": "node ./tools/commit.js"
   },
   "author": "com.appleple",

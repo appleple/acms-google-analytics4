@@ -1,6 +1,6 @@
 <?php
 
-namespace Acms\Plugins\Event;
+namespace Acms\Plugins\GoogleAnalytics4;
 
 use ACMS_App;
 use Acms\Services\Common\InjectTemplate;
@@ -45,16 +45,16 @@ class ServiceProvider extends ACMS_App
         $inject = InjectTemplate::singleton();
         // $inject->add('admin-module-config-Event_Calendar', PLUGIN_DIR. 'Event/template/event-calendar_body.html');
         // $inject->add('admin-module-config-Event_Summary', PLUGIN_DIR. 'Event/template/event-summary_body.html');
-        // $inject->add(
-        //     'admin-module-config-Event_ArchiveList',
-        //     PLUGIN_DIR. 'Event/template/event-archive-list_body.html'
-        // );
+        $inject->add(
+            'admin-module-config-GoogleAnalytics4_Ranking',
+            PLUGIN_DIR. 'GoogleAnalytics4/template/admin/config/google-analytics4-ranking_body.html'
+        );
         // $inject->add('admin-module-config-Event_Month', PLUGIN_DIR. 'Event/template/event-month_body.html');
         $inject->add('admin-module-select', PLUGIN_DIR . 'GoogleAnalytics4/template/admin/module/select.html');
 
         if (ADMIN === 'app_' . $this->menu) {
-            $inject->add('admin-topicpath', PLUGIN_DIR . 'GoogleAnalytics4/template/topicpath.html');
-            $inject->add('admin-main', PLUGIN_DIR . 'GoogleAnalytics4/template/main.html');
+            $inject->add('admin-topicpath', PLUGIN_DIR . 'GoogleAnalytics4/template/admin/topicpath.html');
+            $inject->add('admin-main', PLUGIN_DIR . 'GoogleAnalytics4/template/admin/main.html');
         }
     }
     /**

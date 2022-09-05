@@ -1,0 +1,198 @@
+<table class="acms-admin-table-admin-edit">
+  <tr>
+    <th><!--T-->表示件数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->一度に表示される件数です。<!--/T-->"></i></th>
+    <td>
+      <input type="text" name="google-analytics4_ranking_max_results" value="{google-Analytics_ranking_max_results}" size="4" class="acms-admin-form-width-mini" />
+      <input type="hidden" name="config[]" value="google-analytics4_ranking_max_results" />
+      <input type="hidden" name="google-analytics4_ranking_max_results:convert" value="a" />
+      <input type="hidden" name="google-analytics4_ranking_max_results:validator#digits" id="validator-google-analytics4_ranking_max_results-digits" />
+      <div role="alert" aria-live="assertive">
+        <div data-validator-label="google-analytics4_ranking_max_results-validator-digits" class="validator-result-{google-analytics4_ranking_max_results:validator#digits}">
+          <p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th><!--T-->集計開始日<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ランキング集計期間の開始日を指定します。<!--/T-->"></i></th>
+    <td>
+      <input type="text" name="google-analytics4_ranking_start_date" value="{google-analytics4_ranking_start_date}" size="4" class="acms-admin-form-width-mini" />
+      <input type="hidden" name="config[]" value="google-analytics4_ranking_start_date" />
+      <input type="hidden" name="google-analytics4_ranking_start_date:convert" value="a" />
+      <!--T-->例)<!--/T--> YYYY-MM-DD | today | yesterday | daysAgo (7daysAgo)
+    </td>
+  </tr>
+  <tr>
+    <th><!--T-->集計終了日<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->ランキング集計期間の終了日を指定します。<!--/T-->"></i></th>
+    <td>
+      <input type="text" name="google-analytics4_ranking_end_date" value="{google-analytics4_ranking_end_date}" size="4" class="acms-admin-form-width-mini" />
+      <input type="hidden" name="config[]" value="google-analytics4_ranking_end_date" />
+      <input type="hidden" name="google-analytics4_ranking_end_date:convert" value="a" />
+      <!--T-->例)<!--/T--> YYYY-MM-DD | today | yesterday | daysAgo (7daysAgo)
+    </td>
+  </tr>
+</table>
+<h2 class="acms-admin-admin-title2">Dimension Filters</h2>
+<h3 class="acms-admin-h3 acms-admin-margin-top-mini">
+  andGroup
+  <i class="acms-admin-icon acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="andGroupでのフィルターはANDの関係になっています。"></i>
+</h3>
+
+<table class="acms-admin-table-admin-edit">
+  <tbody>
+    <td>
+      <table class="js-fieldgroup-sortable acms-admin-table-admin-edit">
+        <thead>
+          <tr>
+            <th class="acms-admin-table-left acms-admin-admin-config-table-item-handle"> </th>
+            <th class="acms-admin-table-left">fieldName
+              <i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="フィルターの対象となるディメンションを指定します。<a href='https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema#dimensions' target='_blank' rel='noopener noreferrer'>Google Analytics Data API (GA4)</a>"></i>
+            </th>
+            <th class="acms-admin-table-left" style="width: 204px;">matchType
+              <i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="フィルターのマッチタイプを指定します。<a href='https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/FilterExpression#MatchType' target='_blank' rel='noopener noreferrer'>Google Analytics Data API (GA4)</a>"></i>
+            </th>
+            <th class="acms-admin-table-left">value
+              <i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="フィルターの条件を文字列で指定します。"></i>
+            </th>
+            <th class="acms-admin-table-left" style="width: 136px;">caseSensitive
+              <i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="チェックをつけた場合、大文字と小文字を区別します。"></i>
+            </th>
+            <th class="acms-admin-table-left acms-admin-admin-config-table-action">削除</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- BEGIN google-analytics4_ranking_dimension_filters_andGroup_string_filter:loop -->
+          <tr class="sortable-item">
+            <td class="item-handle acms-admin-table-nowrap">
+              <i class="acms-admin-icon-sort"></i>
+            </td>
+            <td>
+              <input type="text" name="google-analytics4_ranking_dimension_filters_andGroup_string_filter_field_name[]" value="{google-analytics4_ranking_dimension_filters_andGroup_string_filter_field_name}" class="acms-admin-form-width-full" />
+            </td>
+            <td>
+              <select name="google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type[]">
+                <option value="MATCH_TYPE_UNSPECIFIED" {google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type:selected#MATCH_TYPE_UNSPECIFIED}>MATCH_TYPE_UNSPECIFIED</option>
+                <option value="EXACT" {google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type:selected#EXACT}>EXACT</option>
+                <option value="BEGINS_WITH" {google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type:selected#BEGINS_WITH}>BEGINS_WITH</option>
+                <option value="ENDS_WITH" {google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type:selected#ENDS_WITH}>ENDS_WITH</option>
+                <option value="CONTAINS" {google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type:selected#CONTAINS}>CONTAINS</option>
+                <option value="FULL_REGEXP" {google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type:selected#FULL_REGEXP}>FULL_REGEXP</option>
+                <option value="PARTIAL_REGEXP" {google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type:selected#PARTIAL_REGEXP}>PARTIAL_REGEXP</option>
+              </select>
+            </td>
+            <td>
+              <input type="text" name="google-analytics4_ranking_dimension_filters_andGroup_string_filter_value[]" value="{google-analytics4_ranking_dimension_filters_andGroup_string_filter_value}" class="acms-admin-form-width-full" />
+            </td>
+            <td>
+              <div class="acms-admin-form-checkbox">
+                <input type="checkbox" name="google-analytics4_ranking_dimension_filters_andGroup_string_filter_case_sensitive[]" value="on" {google-analytics4_ranking_dimension_filters_andGroup_string_filter_case_sensitive:checked#on} id="input-checkbox-google-analytics4_ranking_dimension_filters_andGroup_string_filter_case_sensitive-on"
+                />
+                <label for="input-checkbox-google-analytics4_ranking_dimension_filters_andGroup_string_filter_case_sensitive-on">
+                  <i class="acms-admin-ico-checkbox"></i>
+                </label>
+              </div>
+            </td>
+            <td class="acms-admin-table-nowrap">
+              <input type="button" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="削除" />
+            </td>
+          </tr>
+          <!-- END google-analytics4_ranking_dimension_filters_andGroup_string_filter:loop -->
+          <tr class="sortable-item item-template">
+            <td class="item-handle acms-admin-table-nowrap">
+              <i class="acms-admin-icon-sort"></i>
+            </td>
+            <td>
+              <input type="text" name="google-analytics4_ranking_dimension_filters_andGroup_string_filter_field_name[]" value="" class="acms-admin-form-width-full" />
+            </td>
+            <td>
+              <select name="google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type[]">
+                <option value="MATCH_TYPE_UNSPECIFIED">MATCH_TYPE_UNSPECIFIED</option>
+                <option value="EXACT">EXACT</option>
+                <option value="BEGINS_WITH">BEGINS_WITH</option>
+                <option value="ENDS_WITH">ENDS_WITH</option>
+                <option value="CONTAINS">CONTAINS</option>
+                <option value="FULL_REGEXP">FULL_REGEXP</option>
+                <option value="PARTIAL_REGEXP">PARTIAL_REGEXP</option>
+              </select>
+            </td>
+            <td>
+              <input type="text" name="google-analytics4_ranking_dimension_filters_andGroup_string_filter_value[]" value="" class="acms-admin-form-width-full" />
+            </td>
+            <td>
+              <div class="acms-admin-form-checkbox">
+                <input type="checkbox" name="google-analytics4_ranking_dimension_filters_andGroup_string_filter_case_sensitive[]" value="on" id="input-checkbox-google-analytics4_ranking_dimension_filters_andGroup_string_filter_case_sensitive-on" />
+                <label for="input-checkbox-google-analytics4_ranking_dimension_filters_andGroup_string_filter_case_sensitive-on">
+                  <i class="acms-admin-ico-checkbox"></i>
+                </label>
+              </div>
+            </td>
+            <td class="acms-admin-table-nowrap">
+              <input type="button" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="削除" />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colSpan="5">
+              <input type="button" class="item-insert acms-admin-btn-admin" value="追加" />
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+      <input type="hidden" name="@google-analytics4_ranking_dimension_filters_andGroup_string_filter[]" value="google-analytics4_ranking_dimension_filters_andGroup_string_filter_field_name" />
+      <input type="hidden" name="config[]" value="google-analytics4_ranking_dimension_filters_andGroup_string_filter_field_name" />
+      <input type="hidden" name="@google-analytics4_ranking_dimension_filters_andGroup_string_filter[]" value="google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type" />
+      <input type="hidden" name="config[]" value="google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type" />
+      <input type="hidden" name="@google-analytics4_ranking_dimension_filters_andGroup_string_filter[]" value="google-analytics4_ranking_dimension_filters_andGroup_string_filter_value" />
+      <input type="hidden" name="config[]" value="google-analytics4_ranking_dimension_filters_andGroup_string_filter_value" />
+      <input type="hidden" name="@google-analytics4_ranking_dimension_filters_andGroup_string_filter[]" value="google-analytics4_ranking_dimension_filters_andGroup_string_filter_case_sensitive" />
+      <input type="hidden" name="config[]" value="google-analytics4_ranking_dimension_filters_andGroup_string_filter_case_sensitive" />
+      <input type="hidden" name="config[]" value="@google-analytics4_ranking_dimension_filters_andGroup_string_filter" />
+    </td>
+  </tbody>
+</table>
+<!-- BEGIN_MODULE\ Admin_Rule_Name -->
+<input type="hidden" name="rid" value="\{rid\}" />
+<!-- END_MODULE\ Admin_Rule_Name -->
+
+<!-- BEGIN_MODULE\ Admin_Module_Name -->
+<input type="hidden" name="mid" value="\{mid\}" />
+<!-- END_MODULE\ Admin_Module_Name -->
+
+<!-- BEGIN_MODULE\ Admin_Config_Set_Name -->
+<input type="hidden" name="setid" value="\{setid\}" />
+<!-- END_MODULE\ Admin_Config_Set_Name -->
+
+<style>
+  .acms-admin-table-admin-edit .acms-admin-table-admin-edit th,
+  .acms-admin-table-admin-edit .acms-admin-table-admin-edit td {
+    width: auto;
+  }
+</style>
+
+<script>
+  ACMS.Ready(function(){
+    ACMS.Config.dpicMark = '';
+
+    //--------------
+    // arg guidance
+    ACMS.Config.Admin.argGuidance = {
+      ...ACMS.Config.Admin.argGuidance,
+      'GoogleAnalytics4_Ranking': [],
+    }
+
+    //--------------
+    // axis guidance
+    ACMS.Config.Admin.axisGuidance = {
+      ...ACMS.Config.Admin.axisGuidance,
+      'GoogleAnalytics4_Ranking': [],
+    }
+
+    //--------------------
+    // multi arg guidance
+    ACMS.Config.Admin.multiArgGuidance = {
+      ...ACMS.Config.Admin.multiArgGuidance,
+      'GoogleAnalytics4_Ranking': [],
+    }
+  });
+</script>

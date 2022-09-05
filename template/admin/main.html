@@ -1,0 +1,64 @@
+<header>
+  <div class="container">
+    @include("/admin/topicpath.html")
+  </div>
+  <div>
+    <h1 class="acms-admin-admin-title js-dialog-title">GoogleAnalytics4 設定</h1>
+  </div>
+  <div class="acms-admin-col-md-6"></div>
+</header>
+<!-- BEGIN_MODULE Admin_Config -->
+
+<!-- BEGIN_IF [{notice_mess}/nem/] -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-info">
+  <span
+    class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before"
+    aria-hidden="true"
+  ></span>
+  <button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+  <!--T-->設定を保存しました
+  <!--/T-->
+</p>
+<!-- END_IF -->
+
+<!-- BEGIN_MODULE Admin_Errors -->
+<p class="acms-admin-alert acms-admin-alert-icon acms-admin-alert-danger">
+  <span
+    class="acms-admin-icon acms-admin-icon-news acms-admin-alert-icon-before"
+    aria-hidden="true"
+  ></span>
+  <button class="js-acms-alert-close acms-admin-alert-icon-after">×</button>
+  {error}
+</p>
+<!-- END_MODULE Admin_Errors -->
+
+<form action="" method="post" class="acms-admin-form">
+  <div class="js-acms_fix_marker acms_fix_bg">
+    <div class="acms-admin-form-group acms_fix_bg_index">
+      <input
+        type="submit"
+        name="ACMS_POST_Config"
+        value="保存"
+        class="acms-admin-btn-admin acms-admin-btn-admin-primary acms-admin-btn-admin-save"
+      />
+    </div>
+  </div>
+
+  <table class="acms-admin-table-admin-edit">
+    <tr>
+      <th>Private Key（JSON）<i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="取得した JSON ファイルの絶対パスを指定します。"></i></th>
+      <td>
+        <input type="text" name="google-analytics4_google_application_credentials" value="{google-analytics4_google_application_credentials}" class="acms-admin-form-width-full" />
+        <input type="hidden" name="config[]" value="google-analytics4_google_application_credentials" />
+      </td>
+    </tr>
+    <tr>
+      <th>Property ID <i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="Google Analytics4で作成した<a href='https://support.google.com/analytics/answer/9304153#property' target='_blank' rel='noopener noreferrer'>Property ID</a>を設定します。"></i></th>
+      <td>
+        <input type="text" name="google-analytics4_property_id" value="{google-analytics4_property_id}" class="acms-admin-form-width-full" />
+        <input type="hidden" name="config[]" value="google-analytics4_property_id" />
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END_MODULE Admin_Config -->
