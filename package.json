@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "package": "node ./tools/build.js",
-    "commit": "node ./tools/commit.js"
+    "commit": "node ./tools/commit.js",
+    "prepare": "husky install"
   },
   "author": "com.appleple",
   "license": "ISC",
@@ -14,6 +15,10 @@
     "archiver": "^5.3.0",
     "co": "^4.6.0",
     "fs-extra": "^10.0.0",
-    "node-cmd": "^4.0.0"
+    "node-cmd": "^4.0.0",
+    "husky": "^8.0.0"
+  },
+  "lint-staged": {
+    "*.php": ["composer lint", "composer format"]
   }
 }
