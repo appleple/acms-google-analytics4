@@ -1,13 +1,27 @@
 <table class="acms-admin-table-admin-edit">
   <tr>
+    <th><!--T-->Property ID<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="Google Analytics4で作成した<a href='https://support.google.com/analytics/answer/9304153#property' target='_blank' rel='noopener noreferrer'>Property ID</a>を設定します。"></i></th>
+    <td>
+      <input type="text" name="google-analytics4_property_id" value="{google-analytics4_property_id}" class="acms-admin-form-width-small" />
+      <input type="hidden" name="config[]" value="google-analytics4_property_id" />
+      <input type="hidden" name="google-analytics4_property_id:convert" value="n" />
+      <input type="hidden" name="google-analytics4_property_id:validator#required" id="validator-google-analytics4_property_id-required" />
+      <div role="alert" aria-live="assertive">
+        <div data-validator-label="google-analytics4_property_id-validator-required" class="validator-result-{google-analytics4_property_id:validator#required}">
+          <p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->Property IDを入力して下さい。<!--/T--></p>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
     <th><!--T-->表示件数<!--/T--><i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="<!--T-->一度に表示される件数です。<!--/T-->"></i></th>
     <td>
-      <input type="text" name="google-analytics4_ranking_max_results" value="{google-Analytics_ranking_max_results}" size="4" class="acms-admin-form-width-mini" />
-      <input type="hidden" name="config[]" value="google-analytics4_ranking_max_results" />
-      <input type="hidden" name="google-analytics4_ranking_max_results:convert" value="a" />
-      <input type="hidden" name="google-analytics4_ranking_max_results:validator#digits" id="validator-google-analytics4_ranking_max_results-digits" />
+      <input type="text" name="google-analytics4_ranking_limit" value="{google-analytics4_ranking_limit}" size="4" class="acms-admin-form-width-mini" />
+      <input type="hidden" name="config[]" value="google-analytics4_ranking_limit" />
+      <input type="hidden" name="google-analytics4_ranking_limit:convert" value="a" />
+      <input type="hidden" name="google-analytics4_ranking_limit:validator#digits" id="validator-google-analytics4_ranking_limit-digits" />
       <div role="alert" aria-live="assertive">
-        <div data-validator-label="google-analytics4_ranking_max_results-validator-digits" class="validator-result-{google-analytics4_ranking_max_results:validator#digits}">
+        <div data-validator-label="google-analytics4_ranking_limit-validator-digits" class="validator-result-{google-analytics4_ranking_limit:validator#digits}">
           <p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->数字を入力して下さい。<!--/T--></p>
         </div>
       </div>
@@ -20,6 +34,12 @@
       <input type="hidden" name="config[]" value="google-analytics4_ranking_start_date" />
       <input type="hidden" name="google-analytics4_ranking_start_date:convert" value="a" />
       <!--T-->例)<!--/T--> YYYY-MM-DD | today | yesterday | daysAgo (7daysAgo)
+      <input type="hidden" name="google-analytics4_ranking_start_date:validator#regex" id="validator-google-analytics4_ranking_start_date-regex" value="[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}|today|yesterday|[0-9]+(daysAgo)" />
+      <div role="alert" aria-live="assertive">
+        <div data-validator-label="google-analytics4_ranking_start_date-validator-regex" class="validator-result-{google-analytics4_ranking_start_date:validator#regex}">
+          <p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->正しい形式で入力して下さい。<!--/T--></p>
+        </div>
+      </div>
     </td>
   </tr>
   <tr>
@@ -29,6 +49,12 @@
       <input type="hidden" name="config[]" value="google-analytics4_ranking_end_date" />
       <input type="hidden" name="google-analytics4_ranking_end_date:convert" value="a" />
       <!--T-->例)<!--/T--> YYYY-MM-DD | today | yesterday | daysAgo (7daysAgo)
+      <input type="hidden" name="google-analytics4_ranking_end_date:validator#regex" id="validator-google-analytics4_ranking_end_date-regex" value="[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}|today|yesterday|[0-9]+(daysAgo)" />
+      <div role="alert" aria-live="assertive">
+        <div data-validator-label="google-analytics4_ranking_end_date-validator-regex" class="validator-result-{google-analytics4_ranking_end_date:validator#regex}">
+          <p class="error-text"><span class="acms-admin-icon acms-admin-icon-attention" aria-hidden="true"></span><!--T-->正しい形式で入力して下さい。<!--/T--></p>
+        </div>
+      </div>
     </td>
   </tr>
 </table>

@@ -4,6 +4,7 @@ namespace Acms\Plugins\GoogleAnalytics4;
 
 use ACMS_App;
 use Acms\Services\Common\InjectTemplate;
+use Config;
 
 class ServiceProvider extends ACMS_App
 {
@@ -42,14 +43,19 @@ class ServiceProvider extends ACMS_App
      */
     public function init()
     {
+        require_once dirname(__FILE__).'/vendor/autoload.php';
+
+        $config = Config::loadDefaultField();
+        $config->overload(Config::loadBlogConfig(BID));
+
+        $credentialsPath = $config->get('google-analytics4_google_application_credentials', '');
+        putenv('GOOGLE_APPLICATION_CREDENTIALS=' . $credentialsPath);
+
         $inject = InjectTemplate::singleton();
-        // $inject->add('admin-module-config-Event_Calendar', PLUGIN_DIR. 'Event/template/event-calendar_body.html');
-        // $inject->add('admin-module-config-Event_Summary', PLUGIN_DIR. 'Event/template/event-summary_body.html');
         $inject->add(
             'admin-module-config-GoogleAnalytics4_Ranking',
             PLUGIN_DIR. 'GoogleAnalytics4/template/admin/config/google-analytics4-ranking_body.html'
         );
-        // $inject->add('admin-module-config-Event_Month', PLUGIN_DIR. 'Event/template/event-month_body.html');
         $inject->add('admin-module-select', PLUGIN_DIR . 'GoogleAnalytics4/template/admin/module/select.html');
 
         if (ADMIN === 'app_' . $this->menu) {
