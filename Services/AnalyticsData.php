@@ -2,6 +2,8 @@
 
 namespace Acms\Plugins\GoogleAnalytics4\Services;
 
+require_once dirname(__FILE__).'/../vendor/autoload.php';
+
 use Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
 use Google\Analytics\Data\V1beta\DateRange;
 use Google\Analytics\Data\V1beta\Dimension;
