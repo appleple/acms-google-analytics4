@@ -6,6 +6,14 @@ use Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
 use Google\Analytics\Data\V1beta\DateRange;
 use Google\Analytics\Data\V1beta\Dimension;
 use Google\Analytics\Data\V1beta\Metric;
+use Google\Analytics\Data\V1beta\FilterExpression;
+use Google\Analytics\Data\V1beta\FilterExpressionList;
+use Google\Analytics\Data\V1beta\Filter;
+use Google\Analytics\Data\V1beta\Filter\StringFilter;
+use Google\Analytics\Data\V1beta\Filter\StringFilter\MatchType;
+
+use Google\Analytics\Data\V1beta\RunReportResponse;
+use Google\Protobuf\Internal\RepeatedField;
 
 /**
  * Analytics Data APIのサービス
@@ -13,7 +21,7 @@ use Google\Analytics\Data\V1beta\Metric;
  */
 class AnalyticsData
 {
-    public $request = [];
+    private $request = [];
 
     /**
      * Property IDをセットする
@@ -79,13 +87,52 @@ class AnalyticsData
     }
 
     /**
+     * Dimension Filterをセットする
+     *
+     * @param array $data
+     * @return void
+     */
+    public function setDimensionFilter(array $data)
+    {
+        $this->request['dimensionFilter'] = new FilterExpression([
+            $data['type'] => new FilterExpressionList([
+                'expressions' => array_map(
+                    function ($filter) {
+                        return new FilterExpression([
+                            'filter' => new Filter([
+                                'field_name' => $filter['fieldName'],
+                                'string_filter' => new StringFilter([
+                                    'match_type' => MatchType::value($filter['matchType']),
+                                    'value' => $filter['value'],
+                                    'case_sensitive' => $filter['caseSensitive']
+                                ])
+                            ])
+                        ]);
+                    },
+                    $data['filter']
+                )
+            ])
+        ]);
+    }
+
+    /**
      * レポートを作成する
      *
-     * @return \Google\Analytics\Data\V1beta\RunReportResponse
+     * @return RunReportResponse
      */
-    public function createReport()
+    protected function createReport()
     {
         $client = new BetaAnalyticsDataClient();
         return $client->runReport($this->request);
+    }
+
+    /**
+     * レポートのRowsを取得する
+     *
+     * @return RepeatedField
+     */
+    public function getReportRows()
+    {
+        return $this->createReport()->getRows();
     }
 }

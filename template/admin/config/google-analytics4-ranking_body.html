@@ -59,132 +59,146 @@
   </tr>
 </table>
 <h2 class="acms-admin-admin-title2">Dimension Filters</h2>
-<h3 class="acms-admin-h3 acms-admin-margin-top-mini acms-admin-margin-left-mini" style="font-size: 16px;">
-  andGroup
-  <i class="acms-admin-icon acms-admin-icon-tooltip js-acms-tooltip-hover" data-acms-tooltip="andGroupでのフィルターはANDの関係になります。"></i>
-</h3>
-
 <table class="acms-admin-table-admin-edit">
-  <thead>
-    <tr>
-      <td class="acms-admin-cell-text-bold">String Filter</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <table class="js-fieldgroup-sortable acms-admin-table-admin-edit">
-          <thead>
-            <tr>
-              <th class="acms-admin-table-left acms-admin-admin-config-table-item-handle"> </th>
-              <th class="acms-admin-table-left">fieldName
-                <i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="フィルターの対象となるディメンションを指定します。<a href='https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema#dimensions' target='_blank' rel='noopener noreferrer'>Google Analytics Data API (GA4)</a>"></i>
-              </th>
-              <th class="acms-admin-table-left">matchType
-                <i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="フィルターのマッチタイプを指定します。<a href='https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/FilterExpression#MatchType' target='_blank' rel='noopener noreferrer'>Google Analytics Data API (GA4)</a>"></i>
-              </th>
-              <th class="acms-admin-table-left">value
-                <i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="フィルターの条件を文字列で指定します。"></i>
-              </th>
-              <th class="acms-admin-table-left">
-                caseSensitive
-                <i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="チェックをつけた場合、大文字と小文字を区別します。"></i>
-              </th>
-              <th class="acms-admin-table-left acms-admin-admin-config-table-action">削除</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- BEGIN google-analytics4_ranking_dimension_filters_andGroup_string_filter:loop -->
-            <tr class="sortable-item">
-              <td class="item-handle acms-admin-table-nowrap">
-                <i class="acms-admin-icon-sort"></i>
-              </td>
-              <td>
-                <input type="text" name="google-analytics4_ranking_dimension_filters_andGroup_string_filter_field_name[]" value="{google-analytics4_ranking_dimension_filters_andGroup_string_filter_field_name}" class="acms-admin-form-width-full" />
-              </td>
-              <td class="acms-admin-table-nowrap">
-                <select name="google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type[]">
-                  <option value="MATCH_TYPE_UNSPECIFIED" {google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type:selected#MATCH_TYPE_UNSPECIFIED}>MATCH_TYPE_UNSPECIFIED</option>
-                  <option value="EXACT" {google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type:selected#EXACT}>EXACT</option>
-                  <option value="BEGINS_WITH" {google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type:selected#BEGINS_WITH}>BEGINS_WITH</option>
-                  <option value="ENDS_WITH" {google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type:selected#ENDS_WITH}>ENDS_WITH</option>
-                  <option value="CONTAINS" {google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type:selected#CONTAINS}>CONTAINS</option>
-                  <option value="FULL_REGEXP" {google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type:selected#FULL_REGEXP}>FULL_REGEXP</option>
-                  <option value="PARTIAL_REGEXP" {google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type:selected#PARTIAL_REGEXP}>PARTIAL_REGEXP</option>
-                </select>
-              </td>
-              <td>
-                <input type="text" name="google-analytics4_ranking_dimension_filters_andGroup_string_filter_value[]" value="{google-analytics4_ranking_dimension_filters_andGroup_string_filter_value}" class="acms-admin-form-width-full" />
-              </td>
-              <td class="acms-admin-table-nowrap">
-                <div class="acms-admin-form-checkbox">
-                  <input type="checkbox" name="google-analytics4_ranking_dimension_filters_andGroup_string_filter_case_sensitive[]" value="on" {google-analytics4_ranking_dimension_filters_andGroup_string_filter_case_sensitive:checked#on} id="input-checkbox-google-analytics4_ranking_dimension_filters_andGroup_string_filter_case_sensitive-on"
-                  />
-                  <label for="input-checkbox-google-analytics4_ranking_dimension_filters_andGroup_string_filter_case_sensitive-on">
-                    <i class="acms-admin-ico-checkbox"></i>
-                  </label>
-                </div>
-              </td>
-              <td class="acms-admin-table-nowrap">
-                <input type="button" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="削除" />
-              </td>
-            </tr>
-            <!-- END google-analytics4_ranking_dimension_filters_andGroup_string_filter:loop -->
-            <tr class="sortable-item item-template">
-              <td class="item-handle acms-admin-table-nowrap">
-                <i class="acms-admin-icon-sort"></i>
-              </td>
-              <td>
-                <input type="text" name="google-analytics4_ranking_dimension_filters_andGroup_string_filter_field_name[]" value="" class="acms-admin-form-width-full" />
-              </td>
-              <td class="acms-admin-table-nowrap">
-                <select name="google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type[]">
-                  <option value="MATCH_TYPE_UNSPECIFIED">MATCH_TYPE_UNSPECIFIED</option>
-                  <option value="EXACT">EXACT</option>
-                  <option value="BEGINS_WITH">BEGINS_WITH</option>
-                  <option value="ENDS_WITH">ENDS_WITH</option>
-                  <option value="CONTAINS">CONTAINS</option>
-                  <option value="FULL_REGEXP">FULL_REGEXP</option>
-                  <option value="PARTIAL_REGEXP">PARTIAL_REGEXP</option>
-                </select>
-              </td>
-              <td>
-                <input type="text" name="google-analytics4_ranking_dimension_filters_andGroup_string_filter_value[]" value="" class="acms-admin-form-width-full" />
-              </td>
-              <td>
-                <div class="acms-admin-form-checkbox">
-                  <input type="checkbox" name="google-analytics4_ranking_dimension_filters_andGroup_string_filter_case_sensitive[]" value="on" id="input-checkbox-google-analytics4_ranking_dimension_filters_andGroup_string_filter_case_sensitive-on" />
-                  <label for="input-checkbox-google-analytics4_ranking_dimension_filters_andGroup_string_filter_case_sensitive-on">
-                    <i class="acms-admin-ico-checkbox"></i>
-                  </label>
-                </div>
-              </td>
-              <td class="acms-admin-table-nowrap">
-                <input type="button" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="削除" />
-              </td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colSpan="5">
-                <input type="button" class="item-insert acms-admin-btn-admin" value="追加" />
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-        <input type="hidden" name="@google-analytics4_ranking_dimension_filters_andGroup_string_filter[]" value="google-analytics4_ranking_dimension_filters_andGroup_string_filter_field_name" />
-        <input type="hidden" name="config[]" value="google-analytics4_ranking_dimension_filters_andGroup_string_filter_field_name" />
-        <input type="hidden" name="@google-analytics4_ranking_dimension_filters_andGroup_string_filter[]" value="google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type" />
-        <input type="hidden" name="config[]" value="google-analytics4_ranking_dimension_filters_andGroup_string_filter_match_type" />
-        <input type="hidden" name="@google-analytics4_ranking_dimension_filters_andGroup_string_filter[]" value="google-analytics4_ranking_dimension_filters_andGroup_string_filter_value" />
-        <input type="hidden" name="config[]" value="google-analytics4_ranking_dimension_filters_andGroup_string_filter_value" />
-        <input type="hidden" name="@google-analytics4_ranking_dimension_filters_andGroup_string_filter[]" value="google-analytics4_ranking_dimension_filters_andGroup_string_filter_case_sensitive" />
-        <input type="hidden" name="config[]" value="google-analytics4_ranking_dimension_filters_andGroup_string_filter_case_sensitive" />
-        <input type="hidden" name="config[]" value="@google-analytics4_ranking_dimension_filters_andGroup_string_filter" />
-      </td>
-    </tr>
-  </tbody>
+  <tr>
+    <th class="acms-admin-table-left">絞り込みタイプ
+      <i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="条件が複数ある場合、ANDの関係で絞り込むかORの関係で絞り込むかを指定します。"></i>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <div class="acms-admin-form-radio">
+        <input type="radio" name="google-analytics4_ranking_filter_type" value="and_group" {google-analytics4_ranking_filter_type:checked#and_group} id="input-radio-google-analytics4_ranking_filter_type-and_group" />
+        <label for="input-radio-google-analytics4_ranking_filter_type-and_group">
+          <i class="acms-admin-ico-radio"></i>AND</label>
+      </div>
+      <div class="acms-admin-form-radio">
+        <input type="radio" name="google-analytics4_ranking_filter_type" value="or_group" {google-analytics4_ranking_filter_type:checked#or_group} id="input-radio-google-analytics4_ranking_filter_type-or_group" />
+        <label for="input-radio-google-analytics4_ranking_filter_type-or_group">
+          <i class="acms-admin-ico-radio"></i>OR</label>
+      </div>
+      <input type="hidden" name="config[]" value="google-analytics4_ranking_filter_type" />
+    </td>
+  </tr>
+  <tr>
+    <th class="acms-admin-table-left">
+      絞り込み条件
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <table class="js-fieldgroup-sortable acms-admin-table-admin-edit">
+        <thead>
+          <tr>
+            <th class="acms-admin-table-left acms-admin-admin-config-table-item-handle"> </th>
+            <th class="acms-admin-table-left">fieldName
+              <i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="フィルターの対象となるディメンションを指定します。<a href='https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema#dimensions' target='_blank' rel='noopener noreferrer'>Google Analytics Data API (GA4)</a>"></i>
+            </th>
+            <th class="acms-admin-table-left">matchType
+              <i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="フィルターのマッチタイプを指定します。<a href='https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/FilterExpression#MatchType' target='_blank' rel='noopener noreferrer'>Google Analytics Data API (GA4)</a>"></i>
+            </th>
+            <th class="acms-admin-table-left">value
+              <i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="フィルターの条件を文字列で指定します。"></i>
+            </th>
+            <th class="acms-admin-table-left">
+              caseSensitive
+              <i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="チェックをつけた場合、大文字と小文字を区別します。"></i>
+            </th>
+            <th class="acms-admin-table-left acms-admin-admin-config-table-action">削除</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- BEGIN google-analytics4_ranking_dimension_filters:loop -->
+          <tr class="sortable-item">
+            <td class="item-handle acms-admin-table-nowrap">
+              <i class="acms-admin-icon-sort"></i>
+            </td>
+            <td>
+              <input type="text" name="google-analytics4_ranking_dimension_filters_field_name[]" value="{google-analytics4_ranking_dimension_filters_field_name}" class="acms-admin-form-width-full" />
+            </td>
+            <td class="acms-admin-table-nowrap">
+              <select name="google-analytics4_ranking_dimension_filters_match_type[]">
+                <option value="MATCH_TYPE_UNSPECIFIED" {google-analytics4_ranking_dimension_filters_match_type:selected#MATCH_TYPE_UNSPECIFIED}>MATCH_TYPE_UNSPECIFIED</option>
+                <option value="EXACT" {google-analytics4_ranking_dimension_filters_match_type:selected#EXACT}>EXACT</option>
+                <option value="BEGINS_WITH" {google-analytics4_ranking_dimension_filters_match_type:selected#BEGINS_WITH}>BEGINS_WITH</option>
+                <option value="ENDS_WITH" {google-analytics4_ranking_dimension_filters_match_type:selected#ENDS_WITH}>ENDS_WITH</option>
+                <option value="CONTAINS" {google-analytics4_ranking_dimension_filters_match_type:selected#CONTAINS}>CONTAINS</option>
+                <option value="FULL_REGEXP" {google-analytics4_ranking_dimension_filters_match_type:selected#FULL_REGEXP}>FULL_REGEXP</option>
+                <option value="PARTIAL_REGEXP" {google-analytics4_ranking_dimension_filters_match_type:selected#PARTIAL_REGEXP}>PARTIAL_REGEXP</option>
+              </select>
+            </td>
+            <td>
+              <input type="text" name="google-analytics4_ranking_dimension_filters_value[]" value="{google-analytics4_ranking_dimension_filters_value}" class="acms-admin-form-width-full" />
+            </td>
+            <td class="acms-admin-table-nowrap">
+              <div class="acms-admin-form-checkbox">
+                <input type="checkbox" name="google-analytics4_ranking_dimension_filters_case_sensitive[]" value="on" {google-analytics4_ranking_dimension_filters_case_sensitive:checked#on} id="input-checkbox-google-analytics4_ranking_dimension_filters_case_sensitive-on"
+                />
+                <label for="input-checkbox-google-analytics4_ranking_dimension_filters_case_sensitive-on">
+                  <i class="acms-admin-ico-checkbox"></i>
+                </label>
+              </div>
+            </td>
+            <td class="acms-admin-table-nowrap">
+              <input type="button" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="削除" />
+            </td>
+          </tr>
+          <!-- END google-analytics4_ranking_dimension_filters:loop -->
+          <tr class="sortable-item item-template">
+            <td class="item-handle acms-admin-table-nowrap">
+              <i class="acms-admin-icon-sort"></i>
+            </td>
+            <td>
+              <input type="text" name="google-analytics4_ranking_dimension_filters_field_name[]" value="" class="acms-admin-form-width-full" />
+            </td>
+            <td class="acms-admin-table-nowrap">
+              <select name="google-analytics4_ranking_dimension_filters_match_type[]">
+                <option value="MATCH_TYPE_UNSPECIFIED">MATCH_TYPE_UNSPECIFIED</option>
+                <option value="EXACT">EXACT</option>
+                <option value="BEGINS_WITH">BEGINS_WITH</option>
+                <option value="ENDS_WITH">ENDS_WITH</option>
+                <option value="CONTAINS">CONTAINS</option>
+                <option value="FULL_REGEXP">FULL_REGEXP</option>
+                <option value="PARTIAL_REGEXP">PARTIAL_REGEXP</option>
+              </select>
+            </td>
+            <td>
+              <input type="text" name="google-analytics4_ranking_dimension_filters_value[]" value="" class="acms-admin-form-width-full" />
+            </td>
+            <td>
+              <div class="acms-admin-form-checkbox">
+                <input type="checkbox" name="google-analytics4_ranking_dimension_filters_case_sensitive[]" value="on" id="input-checkbox-google-analytics4_ranking_dimension_filters_case_sensitive-on" />
+                <label for="input-checkbox-google-analytics4_ranking_dimension_filters_case_sensitive-on">
+                  <i class="acms-admin-ico-checkbox"></i>
+                </label>
+              </div>
+            </td>
+            <td class="acms-admin-table-nowrap">
+              <input type="button" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="削除" />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5">
+              <input type="button" class="item-insert acms-admin-btn-admin" value="追加" />
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+      <input type="hidden" name="@google-analytics4_ranking_dimension_filters[]" value="google-analytics4_ranking_dimension_filters_field_name" />
+      <input type="hidden" name="config[]" value="google-analytics4_ranking_dimension_filters_field_name" />
+      <input type="hidden" name="@google-analytics4_ranking_dimension_filters[]" value="google-analytics4_ranking_dimension_filters_match_type" />
+      <input type="hidden" name="config[]" value="google-analytics4_ranking_dimension_filters_match_type" />
+      <input type="hidden" name="@google-analytics4_ranking_dimension_filters[]" value="google-analytics4_ranking_dimension_filters_value" />
+      <input type="hidden" name="config[]" value="google-analytics4_ranking_dimension_filters_value" />
+      <input type="hidden" name="@google-analytics4_ranking_dimension_filters[]" value="google-analytics4_ranking_dimension_filters_case_sensitive" />
+      <input type="hidden" name="config[]" value="google-analytics4_ranking_dimension_filters_case_sensitive" />
+      <input type="hidden" name="config[]" value="@google-analytics4_ranking_dimension_filters" />
+    </td>
+  </tr>
 </table>
+
 <!-- BEGIN_MODULE\ Admin_Rule_Name -->
 <input type="hidden" name="rid" value="\{rid\}" />
 <!-- END_MODULE\ Admin_Rule_Name -->

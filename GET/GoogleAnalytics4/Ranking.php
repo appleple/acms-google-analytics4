@@ -2,6 +2,8 @@
 
 namespace Acms\Plugins\GoogleAnalytics4\GET\GoogleAnalytics4;
 
+use Google\Protobuf\Internal\RepeatedField;
+
 use Acms\Plugins\GoogleAnalytics4\Services\AnalyticsData;
 
 use ACMS_GET;
@@ -25,9 +27,14 @@ class Ranking extends ACMS_GET
     {
         return [
             'propertyId' => config('google-analytics4_property_id'),
-            'limit'      => intval(config('google-analytics4_ranking_limit')) ?: 30,
-            'startDate'  => config('google-analytics4_ranking_start_date', '7daysAgo'),
-            'endDate'    => config('google-analytics4_ranking_end_date', 'today'),
+            'limit' => intval(config('google-analytics4_ranking_limit')) ?: 30,
+            'startDate' => config('google-analytics4_ranking_start_date', '7daysAgo'),
+            'endDate' => config('google-analytics4_ranking_end_date', 'today'),
+            'filterType' => config('google-analytics4_ranking_filter_type', 'andGroup'),
+            'fieldNameAry' => configArray('google-analytics4_ranking_dimension_filters_field_name'),
+            'matchTypeAry' => configArray('google-analytics4_ranking_dimension_filters_match_type'),
+            'valueAry' => configArray('google-analytics4_ranking_dimension_filters_value'),
+            'caseSensitiveAry' => configArray('google-analytics4_ranking_dimension_filters_case_sensitive')
         ];
     }
 
@@ -61,9 +68,14 @@ class Ranking extends ACMS_GET
         $service->setDimension('pageTitle');
         $service->setDimension('pagePath');
         $service->setMetric('screenPageViews');
-        $rows = $service->createReport()->getRows();
 
-        if (count($rows) === 0) {
+        if (!empty($this->config['fieldNameAry'])) {
+            $service->setDimensionFilter($this->createFilterData());
+        }
+
+        $rows = $service->getReportRows();
+
+        if ($rows->count() === 0) {
             return $Tpl->render([
                 'notFound' => (object)[]
             ]);
@@ -74,7 +86,13 @@ class Ranking extends ACMS_GET
         ]);
     }
 
-    protected function buildRanking($rows)
+    /**
+     * ランキングの組み立て
+     *
+     * @param RepeatedField $rows
+     * @return bool
+     */
+    protected function buildRanking(RepeatedField $rows)
     {
         $ranking = [];
 
@@ -87,5 +105,31 @@ class Ranking extends ACMS_GET
         }
 
         return $ranking;
+    }
+
+    /**
+     * フィルターデータの作成
+     *
+     * @return array
+     */
+    protected function createFilterData()
+    {
+        return [
+            'type' => $this->config['filterType'],
+            'filter' => array_map(
+                function ($fieldName, $matchType, $value, $caseSensitive) {
+                    return [
+                        'fieldName' => $fieldName,
+                        'matchType' => $matchType,
+                        'value' => $value,
+                        'caseSensitive' => !!($caseSensitive === 'on')
+                    ];
+                },
+                $this->config['fieldNameAry'],
+                $this->config['matchTypeAry'],
+                $this->config['valueAry'],
+                $this->config['caseSensitiveAry'],
+            )
+        ];
     }
 }
