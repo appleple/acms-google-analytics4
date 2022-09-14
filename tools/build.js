@@ -42,6 +42,7 @@ co(function* () {
     fs.copySync('./vendor', 'GoogleAnalytics4/vendor');
     fs.copySync('./ServiceProvider.php', 'GoogleAnalytics4/ServiceProvider.php');
     yield zipPromise('GoogleAnalytics4', `./build/v${version}/GoogleAnalytics4.zip`);
+    fs.copySync(`./build/v${version}/GoogleAnalytics4.zip`, './build/GoogleAnalytics4.zip');
   } catch (err) {
     console.log(err);
   } finally {
