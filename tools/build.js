@@ -7,7 +7,7 @@ const co = require('co');
 const archiver = require('archiver');
 
 // package.json
-const pkg = require('../package.json');
+const { version } = require('../package.json');
 
 const zipPromise = (src, dist) => {
   return new Promise((resolve, reject) => {
@@ -33,17 +33,18 @@ const zipPromise = (src, dist) => {
 
 co(function* () {
   try {
-    fs.mkdirsSync(`GoogleAnalytics4`);
-    fs.mkdirsSync(`build`);
-    fs.copySync(`./README.md`, `GoogleAnalytics4/README.md`);
-    fs.copySync(`./images`, `GoogleAnalytics4/images`);
-    fs.copySync(`./GET`, `GoogleAnalytics4/GET`);
-    fs.copySync(`./Services`, `GoogleAnalytics4/Services`);
-    fs.copySync(`./template`, `GoogleAnalytics4/template`);
-    fs.copySync(`./ServiceProvider.php`, `GoogleAnalytics4/ServiceProvider.php`);
-    yield zipPromise(`GoogleAnalytics4`, `./build/GoogleAnalytics4${pkg.version}.zip`);
-    fs.removeSync(`GoogleAnalytics4`);
+    fs.mkdirsSync('GoogleAnalytics4');
+    fs.mkdirsSync(`build/v${version}`);
+    fs.copySync('./README.md', 'GoogleAnalytics4/README.md');
+    fs.copySync('./GET', 'GoogleAnalytics4/GET');
+    fs.copySync('./Services', 'GoogleAnalytics4/Services');
+    fs.copySync('./template', 'GoogleAnalytics4/template');
+    fs.copySync('./vendor', 'GoogleAnalytics4/vendor');
+    fs.copySync('./ServiceProvider.php', 'GoogleAnalytics4/ServiceProvider.php');
+    yield zipPromise('GoogleAnalytics4', `./build/v${version}/GoogleAnalytics4.zip`);
   } catch (err) {
     console.log(err);
+  } finally {
+    fs.removeSync('GoogleAnalytics4');
   }
 });
