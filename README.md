@@ -23,7 +23,7 @@ Google Analytics 4 拡張アプリを使用して Google Analytics 4 と連携�
 
 #### プロジェクトの作成
 
-[Google Cloud Platform](https://console.cloud.google.com/)からプロジェクトを作成します。作成手順は[公式ドキュメント](https://cloud.google.com/resource-manager/docs/creating-managing-projects?hl=ja)を参考にしてください。
+[Google Cloud Platform](https://console.cloud.google.com/)からプロジェクトを作成します。作成手順は[公式のガイド](https://cloud.google.com/resource-manager/docs/creating-managing-projects?hl=ja)を参考にしてください。
 
 #### Google Analytics Data API を有効にする
 
@@ -74,19 +74,9 @@ Google Analytics 4 拡張アプリの設定ページにて、Google Cloud Platfo
 
 Property ID に、Google Analytics4で作成した [Property ID](https://support.google.com/analytics/answer/9304153#property) を設定することで、設定したプロパティのデータを表示することが可能です。
 
-## お問い合わせ
+## GoogleAnalytics4_Ranking モジュール
 
-<table>
-  <tr>
-    <td>会社名</td>
-    <td>有限会社アップルップル</td>
-  </tr>
-  <tr>
-    <td>メールアドレス</td>
-    <td>info@a-blogcms.jp</td>
-  </tr>
-  <tr>
-    <td>お問合せフォーム</td>
-    <td><a href="https://www.a-blogcms.jp/contact/" target="_blank" rel=”noopener noreferrer”>https://www.a-blogcms.jp/contact/</a></td>
-  </tr>
-</table>
+GoogleAnalytics4_Ranking モジュールは、ディメンションに `pageTitle` と `pagePath` を指定し、メトリクス（指標）に `screenPageViews` を指定し取得したデータを表示するモジュールです。
+
+絞り込み条件には、↑の条件で指定できる項目を指定する必要がありますのでご注意ください。
+
