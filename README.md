@@ -74,7 +74,10 @@ Google Analytics 4 拡張アプリの設定ページにて、Google Cloud Platfo
 
 Property ID に、Google Analytics4で作成した [Property ID](https://support.google.com/analytics/answer/9304153#property) を設定することで、設定したプロパティのデータを表示することが可能です。
 
-## GoogleAnalytics4_Ranking モジュール
+## Google Analytics 4 拡張アプリで利用できるモジュールについて
+
+Google Analytics 4 拡張アプリをインストールすることで利用できるモジュールについて説明します。
+### GoogleAnalytics4_Ranking モジュール
 
 GoogleAnalytics4_Ranking モジュールは、ディメンションに `pageTitle` と `pagePath` を指定し、メトリクス（指標）に `screenPageViews` を指定し取得したデータを表示するモジュールです。
 
