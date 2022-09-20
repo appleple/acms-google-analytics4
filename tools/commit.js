@@ -1,35 +1,11 @@
 "use strict"
 
+const { systemCmd } = require('./lib/system.js');
+
 const co = require('co');
-const cmd = require('node-cmd');
 
 // package.json
 const { version } = require('../package.json');
-
-/**
- * Run system command
- *
- * @param cmdString
- * @returns {Promise}
- */
- const systemCmd = cmdString => {
-  return new Promise((resolve) => {
-    cmd.get(
-      cmdString,
-      (data, err, stderr) => {
-        console.log(cmdString);
-        console.log(data);
-        if (err) {
-          console.log(err);
-        }
-        if (stderr) {
-          console.log(stderr);
-        }
-        resolve(data);
-      }
-    );
-  });
-}
 
 co(function* () {
   try {

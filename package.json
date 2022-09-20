@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "node ./tools/build.js",
+    "package": "npm run setup && npm run build:app",
+    "build:app": "node ./tools/build.js",
     "commit": "node ./tools/commit.js",
+    "setup": "node ./tools/setup.js",
     "prepare": "husky install"
   },
   "author": "com.appleple",
