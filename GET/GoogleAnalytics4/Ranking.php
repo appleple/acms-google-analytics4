@@ -30,7 +30,7 @@ class Ranking extends ACMS_GET
             'limit' => intval(config('google-analytics4_ranking_limit')) ?: 30,
             'startDate' => config('google-analytics4_ranking_start_date', '7daysAgo'),
             'endDate' => config('google-analytics4_ranking_end_date', 'today'),
-            'filterType' => config('google-analytics4_ranking_filter_type', 'andGroup'),
+            'filterType' => config('google-analytics4_ranking_filter_type', 'and_group'),
             'fieldNameAry' => configArray('google-analytics4_ranking_dimension_filters_field_name'),
             'matchTypeAry' => configArray('google-analytics4_ranking_dimension_filters_match_type'),
             'valueAry' => configArray('google-analytics4_ranking_dimension_filters_value'),
