@@ -1,0 +1,98 @@
+@extends("/_layouts/two-column.html")
+@section("head-link")
+@parent
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+@endsection
+
+@section("head-js")
+@parent
+<script src="https://unpkg.com/vue@3.2"></script>
+<script>
+
+  const X_API_KEY = ''; // コンフィグ > API設定で取得したX-API-KEYを設定してください
+  const MODULE_ID = 'ga4_ranking'; // GoogleAnalytics4_Ranking モジュールのモジュールIDを設定してください
+
+  /**
+   * 末尾スラッシュを削除する
+   *
+   * @param {string}
+   * @return {string}
+   */
+  const removeTrailingSlash = (string) => string.replace(/\/$/, '');
+
+  const { createApp, ref, onMounted } = Vue;
+
+  const googleAnalytics4Ranking = {
+    setup() {
+      const isLoading = ref(false);
+      const setIsLoading = (state) => {
+        isLoading.value = state
+      }
+
+      const ranking = ref([]);
+      const setRanking = (state) => {
+        ranking.value = state
+      }
+
+      const getRanking = async () => {
+        const endpoint = `${removeTrailingSlash(new URL(window.location.pathname, window.location.origin).toString())}/api/${MODULE_ID}/`
+        const res = await fetch(endpoint, {
+          headers: { 'X-API-KEY': X_API_KEY },
+        })
+        if (!res.ok) {
+          throw new Error(res.statusText)
+        }
+        const data = await res.json();
+        return data.ranking ?? [];
+      }
+
+      onMounted(async () => {
+        try {
+          setIsLoading(true);
+          const ranking = await getRanking();
+          setRanking(ranking);
+          setIsLoading(false);
+        } catch (e) {
+          console.error(e)
+        }
+      })
+
+      return {
+        isLoading,
+        ranking
+      }
+    }
+  };
+
+  window.addEventListener('DOMContentLoaded', () => {
+    createApp(googleAnalytics4Ranking).mount('#js-google-analytics4-ranking');
+  })
+</script>
+<style>
+  /**
+   * Mustache構文のチラつき防止
+   *
+   * @see https://v3.ja.vuejs.org/api/directives.html#v-cloak
+   */
+  [v-cloak] {
+    display: none;
+  }
+</style>
+@endsection
+
+@section("main")
+<div class="main-wrap">
+  <!-- エントリーボディ -->
+  @include("/include/entry-body-index.html")
+
+  <!-- 確認用テンプレート -->
+  @include("/include/check-seo.html")
+</div>
+@endsection
+
+@section("sub")
+
+<!-- Google Analytics 4 ランキング -->
+@include("/include/google-analytics4-ranking.html")
+
+@endsection

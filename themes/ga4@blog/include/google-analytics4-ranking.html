@@ -1,0 +1,12 @@
+<h3 class="h5">Google Analytics 4 ランキング</h3>
+@verbatim
+<div id="js-google-analytics4-ranking" v-cloak>
+  <p v-if="isLoading">Loading...</p>
+  <p v-else-if="ranking.length <= 0">Not Found.</p>
+  <ol v-else class="list-group list-group-numbered">
+    <li v-for="page in ranking" class="list-group-item">
+      <a href="page.path">[{{ page.views }} views] {{ page.title }}</a>
+    </li>
+  </ol>
+</div>
+@endverbatim
