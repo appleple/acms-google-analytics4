@@ -39,7 +39,7 @@
         ranking.value = state
       }
 
-      const getRanking = async () => {
+      const fetchRanking = async () => {
         const endpoint = `${removeTrailingSlash(new URL(window.location.pathname, window.location.origin).toString())}/api/${MODULE_ID}/`;
         const res = await fetch(endpoint, {
           headers: { 'X-API-KEY': X_API_KEY },
@@ -54,7 +54,7 @@
       onMounted(async () => {
         setIsLoading(true);
         try {
-          const ranking = await getRanking();
+          const ranking = await fetchRanking();
           setRanking(ranking);
         } catch (e) {
           setIsError(true);
