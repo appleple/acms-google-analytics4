@@ -29,36 +29,44 @@
         isLoading.value = state
       }
 
+      const isError = ref(false);
+      const setIsError = (state) => {
+        isError.value = state
+      }
+
       const ranking = ref([]);
       const setRanking = (state) => {
         ranking.value = state
       }
 
       const getRanking = async () => {
-        const endpoint = `${removeTrailingSlash(new URL(window.location.pathname, window.location.origin).toString())}/api/${MODULE_ID}/`
+        const endpoint = `${removeTrailingSlash(new URL(window.location.pathname, window.location.origin).toString())}/api/${MODULE_ID}/`;
         const res = await fetch(endpoint, {
           headers: { 'X-API-KEY': X_API_KEY },
-        })
+        });
         if (!res.ok) {
-          throw new Error(res.statusText)
+          throw new Error(res.statusText);
         }
         const data = await res.json();
         return data.ranking ?? [];
       }
 
       onMounted(async () => {
+        setIsLoading(true);
         try {
-          setIsLoading(true);
           const ranking = await getRanking();
           setRanking(ranking);
-          setIsLoading(false);
         } catch (e) {
-          console.error(e)
+          setIsError(true);
+          console.error(e);
+        } finally {
+          setIsLoading(false);
         }
       })
 
       return {
         isLoading,
+        isError,
         ranking
       }
     }

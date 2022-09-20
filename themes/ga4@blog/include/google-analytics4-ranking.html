@@ -2,6 +2,7 @@
 @verbatim
 <div id="js-google-analytics4-ranking" v-cloak>
   <p v-if="isLoading">Loading...</p>
+  <p v-else-if="isError" class="text-danger">※データの読み込みに失敗しました。</p>
   <p v-else-if="ranking.length <= 0">Not Found.</p>
   <ol v-else class="list-group list-group-numbered">
     <li v-for="page in ranking" class="list-group-item">
