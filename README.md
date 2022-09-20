@@ -4,6 +4,7 @@ Google Analytics 4（GA4）と連携するための拡張アプリです。
 ## 動作環境
 - a-blog cms: >= Ver. 3.0.0
 - PHP： 7.25 ~
+- BC Math （PHP Extension）
 
 ## ダウンロード
 
@@ -19,25 +20,25 @@ Google Analytics 4（GA4）と連携するための拡張アプリです。
 ## 事前準備
 Google Analytics 4 拡張アプリを使用して Google Analytics 4 と連携するためには Google Cloud Platform と Google Analytics 4 それぞれでいくつか準備が必要になります。
 
-### Google Cloud Platform
+### 1. Google Cloud Platform
 
-#### プロジェクトの作成
+#### 1-1. プロジェクトの作成
 
 [Google Cloud Platform](https://console.cloud.google.com/)からプロジェクトを作成します。作成手順は[公式のガイド](https://cloud.google.com/resource-manager/docs/creating-managing-projects?hl=ja)を参考にしてください。
 
-#### Google Analytics Data API を有効にする
+#### 1-2. Google Analytics Data API を有効にする
 
 Google Cloud Platform のダッシュボード > API とサービス > API ライブラリ より **Google Analytics Data API** を有効にします。
 
-#### サービス アカウントを作成する
+#### 1-3. サービス アカウントを作成する
 
 [公式のガイド](https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating)を参考にサービスアカウントを作成します。
 
-#### サービス アカウント キーを作成・ダウンロードする
+#### 1-4. サービス アカウント キーを作成・ダウンロードする
 
 [公式のガイド](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating)を参考にサービス アカウント キーを作成してダウンロードします。
 
-### Google Analytics 4
+### 2. Google Analytics 4
 [Google Analytics 4](https://www.google.com/analytics/web/?hl=ja) > 管理 > プロパティのアクセス管理 を開き、ユーザーを追加します。
 
 このとき、メールアドレスは先程 Google Cloud Platform で追加したサービスアカウントのメールアドレスを設定します。また、アクセス権は「閲覧者」以上を設定してください。
@@ -74,7 +75,7 @@ Google Analytics 4 拡張アプリの設定ページにて、Google Cloud Platfo
 
 Property ID に、Google Analytics4で作成した [Property ID](https://support.google.com/analytics/answer/9304153#property) を設定することで、設定したプロパティのデータを表示することが可能です。
 
-## Google Analytics 4 拡張アプリで利用できるモジュールについて
+## モジュールについて
 
 Google Analytics 4 拡張アプリをインストールすることで利用できるモジュールについて説明します。
 ### GoogleAnalytics4_Ranking モジュール
