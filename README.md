@@ -3,7 +3,7 @@ Google Analytics 4（GA4）と連携するための拡張アプリです。
 
 ## 動作環境
 - a-blog cms: >= Ver. 3.0.0
-- PHP： 7.25 ~
+- PHP： 7.4 ~
 - BC Math （PHP Extension）
 
 ## ダウンロード
