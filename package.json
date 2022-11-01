@@ -1,6 +1,6 @@
 {
   "name": "acms-google-analytics4",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Google Analytics4（GA4）と連携するための拡張アプリです。",
   "main": "index.js",
   "scripts": {
