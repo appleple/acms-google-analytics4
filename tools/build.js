@@ -17,6 +17,7 @@ co(function* () {
     fs.mkdirsSync(`build/v${version}`);
     fs.copySync('./README.md', 'GoogleAnalytics4/README.md');
     fs.copySync('./GET', 'GoogleAnalytics4/GET');
+    fs.copySync('./images', 'GoogleAnalytics4/images');
     fs.copySync('./Services', 'GoogleAnalytics4/Services');
     fs.copySync('./template', 'GoogleAnalytics4/template');
     fs.copySync('./vendor', 'GoogleAnalytics4/vendor');
