@@ -61,6 +61,10 @@ Google Analytics 4 拡張アプリの設定ページにて、Google Cloud Platfo
   <p>Not Found.</p>
   <!-- END notFound -->
 
+  <!-- BEGIN error -->
+  <p>エラーが発生したためランキングを取得できませんでした。</p>
+  <!-- END error -->
+
   <ul><!-- BEGIN ranking:loop -->
     <li>
       <a href="{path}">[{views} views] {title}</a>
