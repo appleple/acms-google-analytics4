@@ -76,6 +76,7 @@ class Ranking extends ACMS_GET
         try {
             $rows = $service->getReportRows();
         } catch (\Google\ApiCore\ApiException $e) {
+            userErrorLog('ACMS Error: In GoogleAnalytics4 extension -> ' . $e->getMessage());
             return $Tpl->render([
                 'error' => (object)[]
             ]);
