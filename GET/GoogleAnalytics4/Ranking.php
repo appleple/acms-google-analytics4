@@ -73,7 +73,13 @@ class Ranking extends ACMS_GET
             $service->setDimensionFilter($this->createFilterData());
         }
 
-        $rows = $service->getReportRows();
+        try {
+            $rows = $service->getReportRows();
+        } catch (\Google\ApiCore\ApiException $e) {
+            return $Tpl->render([
+                'error' => (object)[]
+            ]);
+        }
 
         if ($rows->count() === 0) {
             return $Tpl->render([

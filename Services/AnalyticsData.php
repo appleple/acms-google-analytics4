@@ -121,11 +121,17 @@ class AnalyticsData
      * レポートを作成する
      *
      * @return RunReportResponse
+     * @throws Google\ApiCore\ApiException
      */
     protected function createReport()
     {
         $client = new BetaAnalyticsDataClient();
-        return $client->runReport($this->request);
+        try {
+            $response = $client->runReport($this->request);
+        } finally {
+            $client->close();
+        }
+        return $response;
     }
 
     /**
