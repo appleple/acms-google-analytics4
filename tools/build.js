@@ -2,32 +2,67 @@
  * 配布バージョン作成プログラム
  */
 
-const { zipPromise } = require('./lib/system.js');
-
 const fs = require('fs-extra');
 const co = require('co');
+const { zipPromise } = require('./lib/system.js');
 
-// package.json
 const { version } = require('../package.json');
 
+const srcDir = '.'
+const zipDir = 'GoogleAnalytics4'
+
+const ignores = [
+  '.git',
+  '.gitignore',
+  'node_modules',
+  'vendor',
+  '.editorconfig',
+  '.eslintrc.js',
+  '.node-version',
+  '.husky',
+  'build',
+  '.prettierrc.js',
+  'composer.json',
+  'composer.lock',
+  'package-lock.json',
+  'package.json',
+  'phpcs.xml',
+  'phpmd.xml',
+  '.phplint-cache',
+  'phpmd.log',
+  'tools',
+];
 
 co(function* () {
   try {
-    fs.mkdirsSync('GoogleAnalytics4');
-    fs.mkdirsSync(`build/v${version}`);
-    fs.copySync('./README.md', 'GoogleAnalytics4/README.md');
-    fs.copySync('./GET', 'GoogleAnalytics4/GET');
-    fs.copySync('./images', 'GoogleAnalytics4/images');
-    fs.copySync('./Services', 'GoogleAnalytics4/Services');
-    fs.copySync('./template', 'GoogleAnalytics4/template');
-    fs.copySync('./vendor', 'GoogleAnalytics4/vendor');
-    fs.copySync('./themes', 'GoogleAnalytics4/themes');
-    fs.copySync('./ServiceProvider.php', 'GoogleAnalytics4/ServiceProvider.php');
-    yield zipPromise('GoogleAnalytics4', `./build/v${version}/GoogleAnalytics4.zip`);
-    fs.copySync(`./build/v${version}/GoogleAnalytics4.zip`, './build/GoogleAnalytics4.zip');
+    /**
+     * ready plugins files
+     */
+    const copyFiles = fs.readdirSync(srcDir);
+    fs.mkdirsSync(zipDir);
+    fs.mkdirsSync('build');
+
+    /**
+     * copy plugins files
+     */
+    copyFiles.forEach((file) => {
+      fs.copySync(`${srcDir}/${file}`, `${zipDir}/${file}`);
+    });
+
+    /**
+     * Ignore files
+     */
+    console.log('Remove unused files.');
+    console.log(ignores);
+    ignores.forEach((path) => {
+      fs.removeSync(`${zipDir}/${path}`);
+    });
+
+    yield zipPromise(zipDir, `./build/${zipDir}.zip`);
+    fs.copySync(`./build/${zipDir}.zip`, `./build/v${version}/${zipDir}.zip`);
   } catch (err) {
     console.log(err);
   } finally {
-    fs.removeSync('GoogleAnalytics4');
+    fs.removeSync(zipDir);
   }
 });
