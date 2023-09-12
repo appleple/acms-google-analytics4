@@ -90,7 +90,7 @@ GoogleAnalytics4_Ranking モジュールは、ディメンションに `pageTitl
 
 例えば、↓画像のように設定することで、ランキングに表示するコンテンツを詳細ページのみに限定する事ができます。
 
-![ランキングに表示するコンテンツを詳細ページのみに限定する設定](/images/dimension-filters-example.png)
+![ランキングに表示するコンテンツを詳細ページのみに限定する設定](images/dimension-filters-example.png)
 
 ## 同梱のサンプルテーマについて
 
