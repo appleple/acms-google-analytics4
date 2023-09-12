@@ -15,7 +15,6 @@ const ignores = [
   '.git',
   '.gitignore',
   'node_modules',
-  'vendor',
   '.editorconfig',
   '.eslintrc.js',
   '.node-version',
@@ -58,8 +57,12 @@ co(function* () {
       fs.removeSync(`${zipDir}/${path}`);
     });
 
+    /**
+     * Copy README.md
+     */
+    fs.copySync('README.md', `${zipDir}/README.md`);
+
     yield zipPromise(zipDir, `./build/${zipDir}.zip`);
-    fs.copySync(`./build/${zipDir}.zip`, `./build/v${version}/${zipDir}.zip`);
   } catch (err) {
     console.log(err);
   } finally {
