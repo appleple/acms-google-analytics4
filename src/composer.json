@@ -1,0 +1,12 @@
+{
+  "name": "com.appleple/acms-google-analytics4",
+  "description": "Google Analytics4（GA4）と連携するための拡張アプリです。",
+  "require": {
+    "google/analytics-data": "^0.8.6"
+  },
+  "config": {
+    "platform": {
+      "php": "7.4"
+    }
+  }
+}

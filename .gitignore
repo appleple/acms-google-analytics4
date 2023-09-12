@@ -19,5 +19,5 @@ yarn-error.log*
 node_modules/
 
 # PHP
-/vendor
+vendor
 .phplint-cache

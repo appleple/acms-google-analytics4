@@ -2,7 +2,7 @@
 
 namespace Acms\Plugins\GoogleAnalytics4\Services;
 
-require_once dirname(__FILE__).'/../vendor/autoload.php';
+require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
 use Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
 use Google\Analytics\Data\V1beta\DateRange;
@@ -13,7 +13,6 @@ use Google\Analytics\Data\V1beta\FilterExpressionList;
 use Google\Analytics\Data\V1beta\Filter;
 use Google\Analytics\Data\V1beta\Filter\StringFilter;
 use Google\Analytics\Data\V1beta\Filter\StringFilter\MatchType;
-
 use Google\Analytics\Data\V1beta\RunReportResponse;
 use Google\Protobuf\Internal\RepeatedField;
 

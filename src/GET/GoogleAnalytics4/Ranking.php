@@ -3,9 +3,7 @@
 namespace Acms\Plugins\GoogleAnalytics4\GET\GoogleAnalytics4;
 
 use Google\Protobuf\Internal\RepeatedField;
-
 use Acms\Plugins\GoogleAnalytics4\Services\AnalyticsData;
-
 use ACMS_GET;
 use ACMS_Corrector;
 use Template;

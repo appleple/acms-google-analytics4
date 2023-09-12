@@ -8,7 +8,7 @@ const { zipPromise } = require('./lib/system.js');
 
 const { version } = require('../package.json');
 
-const srcDir = '.'
+const srcDir = 'src'
 const zipDir = 'GoogleAnalytics4'
 
 const ignores = [

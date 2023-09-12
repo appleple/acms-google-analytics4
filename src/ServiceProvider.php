@@ -52,7 +52,7 @@ class ServiceProvider extends ACMS_App
         $inject = InjectTemplate::singleton();
         $inject->add(
             'admin-module-config-GoogleAnalytics4_Ranking',
-            PLUGIN_DIR. 'GoogleAnalytics4/template/admin/config/google-analytics4-ranking_body.html'
+            PLUGIN_DIR . 'GoogleAnalytics4/template/admin/config/google-analytics4-ranking_body.html'
         );
         $inject->add('admin-module-select', PLUGIN_DIR . 'GoogleAnalytics4/template/admin/module/select.html');
 
@@ -61,6 +61,7 @@ class ServiceProvider extends ACMS_App
             $inject->add('admin-main', PLUGIN_DIR . 'GoogleAnalytics4/template/admin/main.html');
         }
     }
+
     /**
      * インストールする前の環境チェック処理
      *
