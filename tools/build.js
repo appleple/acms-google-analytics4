@@ -58,9 +58,9 @@ co(function* () {
     });
 
     /**
-     * Copy README.md
+     * Copy docs
      */
-    fs.copySync('README.md', `${zipDir}/README.md`);
+    fs.copySync('docs', `${zipDir}/docs`);
 
     yield zipPromise(zipDir, `./build/${zipDir}.zip`);
   } catch (err) {
