@@ -95,3 +95,20 @@ GoogleAnalytics4_Ranking モジュールは、ディメンションに `pageTitl
 ## 同梱のサンプルテーマについて
 
 themesディレクトリには、Google Analytics 4 拡張アプリの実装例を通じて拡張アプリの使い方を学ぶことができるサンプルテーマが同梱されています。是非参考にしてみてください。
+
+## トラブルシューティング
+
+### Error occurred during parsing: Fail to push limit. エラーが発生する
+
+FTPソフトなどを活用して本拡張アプリをサーバーにアップロードしている場合、転送モードの設定によってはアップロード時にファイルが破損してしまい以下のエラーが発生する場合があります。
+
+```sh
+Error occurred during parsing: Fail to push limit. in /path/to/extension/plugins/GoogleAnalytics4/vendor/google/protobuf/src/Google/Protobuf/Internal/CodedInputStream.php line: 339
+```
+
+その場合、FTPソフトの転送モードの設定を「バイナリ」モードに設定し設定し、拡張アプリを再アップロードしてください。
+
+
+### Unable to read the credential file specified by GOOGLE_APPLICATION_CREDENTIALS: file Service Account Key does not exist in エラーが発生する
+
+GoogleAnalytics4 設定で設定するService Account Key（JSON）のパスが間違っています。Service Account Key（JSON）のパスはサーバーのルートディレクトリからのパスを設定してください。
