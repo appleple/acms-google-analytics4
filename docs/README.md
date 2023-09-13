@@ -106,7 +106,7 @@ FTPソフトなどを活用して本拡張アプリをサーバーにアップ�
 Error occurred during parsing: Fail to push limit. in /path/to/extension/plugins/GoogleAnalytics4/vendor/google/protobuf/src/Google/Protobuf/Internal/CodedInputStream.php line: 339
 ```
 
-その場合、FTPソフトの転送モードの設定を「バイナリ」モードに設定し設定し、拡張アプリを再アップロードしてください。
+その場合、FTPソフトの転送モードの設定を「バイナリ」モードに設定し、拡張アプリを再アップロードしてください。
 
 
 ### Unable to read the credential file specified by GOOGLE_APPLICATION_CREDENTIALS: file Service Account Key does not exist in エラーが発生する
