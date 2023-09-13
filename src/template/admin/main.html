@@ -46,10 +46,28 @@
 
   <table class="acms-admin-table-admin-edit">
     <tr>
-      <th>Service Account Key（JSON）<i class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover" data-acms-tooltip="Google Cloud Platform で発行した JSON ファイルの絶対パスを指定します。"></i></th>
+      <th>
+        <label for="input-text-google-analytics4_google_application_credentials">
+          Service Account Key（JSON）
+        </label>
+        <i
+          class="acms-admin-icon-tooltip js-acms-tooltip js-acms-tooltip-hover"
+          data-acms-tooltip="Google Cloud Platform で発行した JSON ファイルのパスを指定します。"
+        ></i>
+      </th>
       <td>
-        <input type="text" name="google-analytics4_google_application_credentials" value="{google-analytics4_google_application_credentials}" class="acms-admin-form-width-full" />
+        <input
+          type="text"
+          name="google-analytics4_google_application_credentials"
+          value="{google-analytics4_google_application_credentials}"
+          id="input-text-google-analytics4_google_application_credentials"
+          class="acms-admin-form-width-full"
+          placeholder="/var/www/xxxxxxxxx.json"
+        />
         <input type="hidden" name="config[]" value="google-analytics4_google_application_credentials" />
+        <p class="acms-admin-text-helper acms-admin-margin-top-mini">
+          Service Account Key（JSON）は認証目的で使用されるため、公開ディレクトリに設置しないことを推奨します。
+        </p>
       </td>
     </tr>
   </table>
