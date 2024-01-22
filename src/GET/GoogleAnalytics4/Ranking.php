@@ -7,6 +7,7 @@ use Acms\Plugins\GoogleAnalytics4\Services\AnalyticsData;
 use ACMS_GET;
 use ACMS_Corrector;
 use Template;
+use AcmsLogger;
 
 /**
  *  Analytics Data APIと連携して、
@@ -59,6 +60,13 @@ class Ranking extends ACMS_GET
         $Tpl = new Template($this->tpl, new ACMS_Corrector());
         $this->buildModuleField($Tpl);
 
+        if (empty($this->config['propertyId'])) {
+            if (class_exists('AcmsLogger')) {
+                AcmsLogger::warning('【GoogleAnalytics4】プロパティIDが設定されていません。');
+            }
+            return $Tpl->get();
+        }
+
         $service = new AnalyticsData();
         $service->setPropertyId($this->config['propertyId']);
         $service->setLimit($this->config['limit']);
@@ -74,7 +82,11 @@ class Ranking extends ACMS_GET
         try {
             $rows = $service->getReportRows();
         } catch (\Google\ApiCore\ApiException $e) {
-            userErrorLog('ACMS Error: In GoogleAnalytics4 extension -> ' . $e->getMessage());
+            if (class_exists('AcmsLogger')) {
+                AcmsLogger::error('【GoogleAnalytics4】' . $e->getMessage());
+            } else {
+                userErrorLog('ACMS Error: In GoogleAnalytics4 extension -> ' . $e->getMessage());
+            }
             return $Tpl->render([
                 'error' => (object)[]
             ]);
