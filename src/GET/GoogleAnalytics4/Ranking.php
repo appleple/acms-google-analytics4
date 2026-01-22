@@ -2,12 +2,13 @@
 
 namespace Acms\Plugins\GoogleAnalytics4\GET\GoogleAnalytics4;
 
-use Google\Protobuf\Internal\RepeatedField;
+use Google\Protobuf\RepeatedField;
 use Acms\Plugins\GoogleAnalytics4\Services\AnalyticsData;
+use Acms\Services\Facades\Logger;
+use Acms\Services\Facades\Common;
 use ACMS_GET;
 use ACMS_Corrector;
 use Template;
-use AcmsLogger;
 
 /**
  *  Analytics Data APIと連携して、
@@ -61,19 +62,21 @@ class Ranking extends ACMS_GET
         $this->buildModuleField($Tpl);
 
         if (empty($this->config['propertyId'])) {
-            if (class_exists('AcmsLogger')) {
-                AcmsLogger::warning('【GoogleAnalytics4】プロパティIDが設定されていません。');
-            }
+            Logger::warning('【GoogleAnalytics4】プロパティIDが設定されていません。');
             return $Tpl->get();
         }
 
         $service = new AnalyticsData();
         $service->setPropertyId($this->config['propertyId']);
         $service->setLimit($this->config['limit']);
-        $service->setDateRange($this->config['startDate'], $this->config['endDate']);
-        $service->setDimension('pageTitle');
-        $service->setDimension('pagePath');
-        $service->setMetric('screenPageViews');
+        $service->setDateRanges([
+            [
+                'start_date' => $this->config['startDate'],
+                'end_date' => $this->config['endDate']
+            ]
+        ]);
+        $service->setDimensions(['pageTitle', 'pagePath']);
+        $service->setMetrics(['screenPageViews']);
 
         if (!empty($this->config['fieldNameAry'])) {
             $service->setDimensionFilter($this->createFilterData());
@@ -82,11 +85,7 @@ class Ranking extends ACMS_GET
         try {
             $rows = $service->getReportRows();
         } catch (\Google\ApiCore\ApiException $e) {
-            if (class_exists('AcmsLogger')) {
-                AcmsLogger::error('【GoogleAnalytics4】' . $e->getMessage());
-            } else {
-                userErrorLog('ACMS Error: In GoogleAnalytics4 extension -> ' . $e->getMessage());
-            }
+            Logger::error('【GoogleAnalytics4】Google Analytics Data API のリクエストに失敗しました。', Common::exceptionArray($e));
             return $Tpl->render([
                 'error' => (object)[]
             ]);

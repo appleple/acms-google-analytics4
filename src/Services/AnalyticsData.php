@@ -4,7 +4,7 @@ namespace Acms\Plugins\GoogleAnalytics4\Services;
 
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
-use Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
+use Google\Analytics\Data\V1beta\Client\BetaAnalyticsDataClient;
 use Google\Analytics\Data\V1beta\DateRange;
 use Google\Analytics\Data\V1beta\Dimension;
 use Google\Analytics\Data\V1beta\Metric;
@@ -14,7 +14,8 @@ use Google\Analytics\Data\V1beta\Filter;
 use Google\Analytics\Data\V1beta\Filter\StringFilter;
 use Google\Analytics\Data\V1beta\Filter\StringFilter\MatchType;
 use Google\Analytics\Data\V1beta\RunReportResponse;
-use Google\Protobuf\Internal\RepeatedField;
+use Google\Analytics\Data\V1beta\RunReportRequest;
+use Google\Protobuf\RepeatedField;
 
 /**
  * Analytics Data APIのサービス
@@ -22,7 +23,13 @@ use Google\Protobuf\Internal\RepeatedField;
  */
 class AnalyticsData
 {
-    private $request = [];
+    private RunReportRequest $request;
+
+
+    public function __construct()
+    {
+        $this->request = new RunReportRequest();
+    }
 
     /**
      * Property IDをセットする
@@ -32,7 +39,7 @@ class AnalyticsData
      */
     public function setPropertyId(string $propertyId)
     {
-        $this->request['property'] = 'properties/' . $propertyId;
+        $this->request->setProperty('properties/' . $propertyId);
     }
 
     /**
@@ -43,48 +50,57 @@ class AnalyticsData
      */
     public function setLimit(int $limit)
     {
-        $this->request['limit'] = $limit;
+        $this->request->setLimit($limit);
     }
 
     /**
      * 集計期間をセットする
      *
-     * @param string $start
-     * @param string $end
+     * @param array{start_date: string, end_date: string}[] $dateRanges
      * @return void
      */
-    public function setDateRange(string $start, string $end)
+    public function setDateRanges(array $dateRanges = [])
     {
-        $this->request['dateRanges'][] = new DateRange([
-            'start_date' => $start,
-            'end_date' => $end,
-        ]);
+
+        $dateRanges = array_map(function ($dateRange) {
+            return new DateRange([
+                'start_date' => $dateRange['start_date'],
+                'end_date' => $dateRange['end_date'],
+            ]);
+        }, $dateRanges);
+        $this->request->setDateRanges($dateRanges);
     }
 
     /**
      * ディメンションをセットする
      *
-     * @param string $name
+     * @param string[] $names
      * @return void
      */
-    public function setDimension(string $name)
+    public function setDimensions(array $names)
     {
-        $this->request['dimensions'][] = new Dimension([
-            'name' => $name
-        ]);
+        $dimensions = array_map(function ($name) {
+            return new Dimension([
+                'name' => $name
+            ]);
+        }, $names);
+        $this->request->setDimensions($dimensions);
     }
 
     /**
      * メトリクスをセットする
      *
-     * @param string $name
+     * @param string[] $names
      * @return void
      */
-    public function setMetric(string $name)
+    public function setMetrics(array $names)
     {
-        $this->request['metrics'][] = new Metric([
-            'name' => $name
-        ]);
+        $metrics = array_map(function ($name) {
+            return new Metric([
+                'name' => $name
+            ]);
+        }, $names);
+        $this->request->setMetrics($metrics);
     }
 
     /**
@@ -95,7 +111,7 @@ class AnalyticsData
      */
     public function setDimensionFilter(array $data)
     {
-        $this->request['dimensionFilter'] = new FilterExpression([
+        $dimensionFilter = new FilterExpression([
             $data['type'] => new FilterExpressionList([
                 'expressions' => array_map(
                     function ($filter) {
@@ -114,6 +130,7 @@ class AnalyticsData
                 )
             ])
         ]);
+        $this->request->setDimensionFilter($dimensionFilter);
     }
 
     /**
