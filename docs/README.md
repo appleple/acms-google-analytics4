@@ -9,7 +9,7 @@ Google Analytics 4（GA4）と連携するための拡張アプリです。
 
 ## ダウンロード
 
-[Google Analytics 4](https://github.com/appleple/acms-google-analytics4/raw/master/build/GoogleAnalytics4.zip)
+[Google Analytics 4](https://github.com/appleple/acms-google-analytics4/releases/latest/download/GoogleAnalytics4.zip)
 
 ## インストール方法
 

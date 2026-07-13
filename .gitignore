@@ -21,3 +21,6 @@ node_modules/
 # PHP
 vendor
 .phplint-cache
+
+# 配布 zip は release.yml が tag 時にビルドして GitHub Release へ公開するため管理外
+/build/
