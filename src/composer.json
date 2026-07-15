@@ -3,11 +3,11 @@
   "description": "Google Analytics4（GA4）と連携するための拡張アプリです。",
   "require": {
     "php": ">=8.1.0",
-    "google/analytics-data": "^0.23.1"
+    "google/analytics-data": "^0.24.0"
   },
   "config": {
     "platform": {
-      "php": "8.1"
+      "php": "8.5"
     }
   }
 }
